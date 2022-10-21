@@ -13,6 +13,20 @@ class XylophoneApp extends StatelessWidget {
     player.play(AssetSource('note$soundNumber.wav'));
   }
 
+  /*Expanded buildKey({Color keyColor, int soundNumber})*/ // we can also define method like this so it will show argument parameter in place of calling
+  Expanded buildKey(Color keyColor, int soundNumber) {
+    return Expanded(
+      child: TextButton(
+        style:
+            ButtonStyle(backgroundColor: MaterialStateProperty.all(keyColor)),
+        onPressed: () {
+          playSound(soundNumber);
+        },
+        child: Text(''),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,85 +36,13 @@ class XylophoneApp extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Expanded(
-                child: TextButton(
-                  style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.red)),
-                  onPressed: () {
-                    playSound(1);
-                  },
-                  child: Text(''),
-                ),
-              ),
-              Expanded(
-                child: TextButton(
-                  style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all(Colors.orange)),
-                  onPressed: () {
-                    final player = AudioPlayer();
-                    player.play(AssetSource('note2.wav'));
-                  },
-                  child: Text(''),
-                ),
-              ),
-              Expanded(
-                child: TextButton(
-                  style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all(Colors.yellow)),
-                  onPressed: () {
-                    final player = AudioPlayer();
-                    player.play(AssetSource('note3.wav'));
-                  },
-                  child: Text(''),
-                ),
-              ),
-              Expanded(
-                child: TextButton(
-                  style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.green)),
-                  onPressed: () {
-                    final player = AudioPlayer();
-                    player.play(AssetSource('note4.wav'));
-                  },
-                  child: Text(''),
-                ),
-              ),
-              Expanded(
-                child: TextButton(
-                  style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.teal)),
-                  onPressed: () {
-                    final player = AudioPlayer();
-                    player.play(AssetSource('note5.wav'));
-                  },
-                  child: Text(''),
-                ),
-              ),
-              Expanded(
-                child: TextButton(
-                  style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.blue)),
-                  onPressed: () {
-                    final player = AudioPlayer();
-                    player.play(AssetSource('note6.wav'));
-                  },
-                  child: Text(''),
-                ),
-              ),
-              Expanded(
-                child: TextButton(
-                  style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all(Colors.purple)),
-                  onPressed: () {
-                    final player = AudioPlayer();
-                    player.play(AssetSource('note7.wav'));
-                  },
-                  child: Text(''),
-                ),
-              ),
+              buildKey(Colors.red, 1),
+              buildKey(Colors.orange, 2),
+              buildKey(Colors.yellow, 3),
+              buildKey(Colors.green, 4),
+              buildKey(Colors.teal, 5),
+              buildKey(Colors.blue, 6),
+              buildKey(Colors.purple, 7),
             ],
           ),
         ),
